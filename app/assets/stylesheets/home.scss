@@ -1,3 +1,29 @@
+$p-color: #951F2B;
+
+div.card.measure {
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  width: 200px;
+  z-index: 3;
+  padding: 15px;
+
+  form {
+    a {
+      display: block;
+      margin: 10px 0;
+    }
+  }
+  h4 {
+    margin-top: 0px;
+  }
+}
+
+div.top-bar#top-bar {
+  position: fixed;
+  
+}
+
 #map {
   height: 100vh;
   width: 100%;

@@ -1,1 +1,20 @@
+<div class="top-bar" id="top-bar">
+</div>
 <div id="map" data-pk="<%= @pk.to_json %>" data-stations="<%= @stations.to_json %>"></div>
+<div class="card measure">
+  <h4>Mesures</h4>
+  <form>
+    <p id="linkTmp">
+      <input name="measure" type="radio" id="temperature" <% if params[:type] == "temperature" %><%= "checked" %><% end %> />
+      <label for="temperature">Température</label>
+    </p>
+    <p id="linkPressure">
+      <input name="measure" type="radio" id="pressure" <% if params[:type] == "pressure" %><%= "checked" %><% end %> />
+      <label for="pressure">Pression</label>
+    </p>
+    <p id="linkWind">
+      <input name="measure" type="radio" id="wind" <% if params[:type] == "wind" %><%= "checked" %><% end %> />
+      <label for="wind">Vent</label>
+    </p>
+  </form>
+</div>
