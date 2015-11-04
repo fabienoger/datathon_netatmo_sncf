@@ -9,6 +9,11 @@ class HomeController < ApplicationController
     #@measures = Measure.all
   end
 
+  def show
+    @station= Station.find_by_station_id(params[:id])
+    @measures = Measure.where(station_id: params[:id])
+  end
+
   def measure
     @measure = Measure.find_by_station_id(params[:id])
     puts "#{@measure}".red
