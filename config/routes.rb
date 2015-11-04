@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get '/map(/:type)' => 'home#index'
-  get '/stations/:id/measures' => 'home#measure'
+  get '/stations/:id/measures/:measureType' => 'home#measure'
+  get '/pk/:id/measures/' => 'home#pkmeasure'
 
   root to: 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.

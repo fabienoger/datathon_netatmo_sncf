@@ -3,7 +3,26 @@ $p-color: #951F2B;
 div.card#measure {
   position: fixed;
   right: 15px;
-  bottom: 50px;
+  bottom: 15px;
+  padding: 15px;
+  width: 200px;
+  display: none;
+
+  div.value {
+    margin: 15px auto;
+    border-radius: 50%;
+    border: 2px solid $p-color;
+    color: $p-color;
+    width: 50px;
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 1.3em;
+  }
+
+  h5::first-letter {
+    margin-top: 0px;
+    text-transform: capitalize;
+  }
 }
 
 div.card.typeMeasure {

@@ -5,10 +5,9 @@ stations = JSON.parse($map.getAttribute("data-stations"));
 pk = JSON.parse($map.getAttribute("data-pk"));
 
 // ##### Change page onclick #####
-// TODO
-/*$('input[type=radio]').click(function() {
+$('input[type=radio]').click(function() {
   window.location.href = "/map/" + this.id;
-});*/
+});
 
 
 // ##### Initialize Map #####
@@ -51,12 +50,14 @@ for(i = 0; i < pk.length; i++)
   if(pk[i].st_x && pk[i].st_y)
   {
     var circle = L.circle([pk[i].st_y, pk[i].st_x], 50, {
-      color: '#789048',
-      fillColor: '#C0D860',
+      color: '#A20707',
+      fillColor: '#A20707',
       fillOpacity: 1,
       opacity: 1
     });
     circle.type = "PK";
+    circle.id = pk[i].pk;
+    circle.on('click', getPkMeasure);
     circle.addTo(markersLayer);
   }
 }
@@ -64,11 +65,11 @@ for(i = 0; i < pk.length; i++)
 // ##### Marker params #####
 params = {
   SNCF: {
-    color: "#0041B1",
+    color: "#C1600B",
     size: 250
   },
   NETATMO: {
-    color: "#F69730",
+    color: "#175A88",
     size: 100
   }
 }
@@ -94,16 +95,34 @@ for(i = 0; i < stations.length; i++)
 // ##### Show measure onclick #####
 function getMarkerMeasure(e)
 {
+  var measureType = $("input[name=measure]:checked").val();
   $.ajax({
     type: "GET",
-    url: "/stations/" + e.target.id + "/measures",
+    url: "/stations/" + e.target.id + "/measures/" + measureType,
     dataType: "json",
     success: function(data){
       console.log(data);
-      $measure.innerHTML = "";
+      $measure.style.display = "block";
+      $measure.innerHTML = "<img width='100%' height='100' src='/assets/" + e.target.type + ".jpg'>";
+      $measure.innerHTML += "<h5>" + data.categ + "</h5><div class='value'>" + parseInt(data.value) + " " + data.unit + "</div>";
     }
   });
 }
 
+// ##### Show measure onclick #####
+function getPkMeasure(e)
+{
+  $.ajax({
+    type: "GET",
+    url: "/pk/" + e.target.id + "/measures/",
+    dataType: "json",
+    success: function(data){
+      console.log(data);
+      $measure.style.display = "block";
+      $measure.innerHTML = "<img width='100%' height='100' src='/assets/SNCF.jpg'>";
+      $measure.innerHTML += "<h5>Température moyenne</h5><div class='value'>" + parseInt(data.temperature_moyenne) + "°C</div>";
+    }
+  });
+}
 
 // ##### Resize markers on zoom #####

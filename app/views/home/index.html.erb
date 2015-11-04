@@ -3,19 +3,19 @@
 <div id="map" data-pk="<%= @pk.to_json %>" data-stations="<%= @stations.to_json %>"></div>
 <div class="card typeMeasure">
   <h4>Mesures</h4>
-  <form>
+  <form id="formMeasures">
     <p id="linkTmp">
-      <input name="measure" type="radio" id="temperature" <% if params[:type] == "temperature" %><%= "checked" %><% end %> />
+      <input name="measure" type="radio" id="temperature" value="température" <% if params[:type] == "temperature" %><%= "checked" %><% end %> />
       <label for="temperature">Température</label>
     </p>
     <p id="linkPressure">
-      <input name="measure" type="radio" id="pressure" <% if params[:type] == "pressure" %><%= "checked" %><% end %> />
+      <input name="measure" type="radio" id="pressure" value="pression" <% if params[:type] == "pressure" %><%= "checked" %><% end %> />
       <label for="pressure">Pression</label>
     </p>
-    <p id="linkWind">
-      <input name="measure" type="radio" id="wind" <% if params[:type] == "wind" %><%= "checked" %><% end %> />
-      <label for="wind">Vent</label>
+    <p id="linkHumidity">
+      <input name="measure" type="radio" id="wet" value="humidité" <% if params[:type] == "wet" %><%= "checked" %><% end %> />
+      <label for="wet">Humidité</label>
     </p>
   </form>
 </div>
-<div id="measure" class="card"></div>
+<div id="measure" class="card center-align"></div>
