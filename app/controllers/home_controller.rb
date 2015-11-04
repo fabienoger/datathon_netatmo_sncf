@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @req = Station.all
+    @stations = Station.all
+    @pk = Pk.all
   end
 end
