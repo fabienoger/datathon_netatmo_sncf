@@ -1,0 +1,15 @@
+<h1>Toto</h1>
+<div style="word-wrap: break-word;">
+<%= @station.to_json %>
+</div>
+
+<ul>
+    <% @measures.each do |measure| %>
+        <li><%= measure.id %></li>
+    <% end %>
+</ul>
+
+<script>
+  exemple = <%== @measures.to_json %>;
+    console.log(exemple);
+</script>

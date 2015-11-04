@@ -12,8 +12,12 @@ class HomeController < ApplicationController
   def pkmeasure
     @temperature = Temperature.where(["pk = ?", params[:id]]).first
     puts "#{@temperature}".red
-    puts "---------------".blue
     render json: @temperature
+  end
+
+  def show
+    @station= Station.find_by_station_id(params[:id])
+    @measures = Measure.where(station_id: params[:id])
   end
 
   def measure
