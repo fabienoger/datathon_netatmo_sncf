@@ -1,12 +1,14 @@
 // ##### Get data-stations #####
 $map = document.getElementById("map");
+$measure = document.getElementById("measure");
 stations = JSON.parse($map.getAttribute("data-stations"));
 pk = JSON.parse($map.getAttribute("data-pk"));
 
 // ##### Change page onclick #####
-$('input[type=radio]').click(function() {
+// TODO
+/*$('input[type=radio]').click(function() {
   window.location.href = "/map/" + this.id;
-});
+});*/
 
 
 // ##### Initialize Map #####
@@ -92,12 +94,13 @@ for(i = 0; i < stations.length; i++)
 // ##### Show measure onclick #####
 function getMarkerMeasure(e)
 {
-  console.log(e.target.id);
-  $.get({
+  $.ajax({
+    type: "GET",
     url: "/stations/" + e.target.id + "/measures",
     dataType: "json",
     success: function(data){
-      alert(data); // Will alert Max
+      console.log(data);
+      $measure.innerHTML = "";
     }
   });
 }

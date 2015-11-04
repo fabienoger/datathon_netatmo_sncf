@@ -1,6 +1,12 @@
 $p-color: #951F2B;
 
-div.card.measure {
+div.card#measure {
+  position: fixed;
+  right: 15px;
+  bottom: 50px;
+}
+
+div.card.typeMeasure {
   position: fixed;
   right: 15px;
   top: 15px;
